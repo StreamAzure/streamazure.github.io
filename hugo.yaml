@@ -65,33 +65,33 @@ menu:
 # 结果是构建不报错、但一篇文章都收不到）。
 module:
   mounts:
-    # 站点的"导航页"（归档、搜索）。只有下面 files 白名单里列出的文件会被读取，
-    # 所以这个目录里以后放草稿/临时 md 也不会跑到站点上。
+    # 站点的"导航页"（归档、搜索）。只有下面 files 白名单里列出的文件会被读取。
     - source: content
       target: content
       files:
         - "_index.md"
         - "archives.md"
         - "search.md"
-        - "categories/_index.md"   # 分类页的标题与说明（不写就会显示英文 Categories）
+        - "categories/_index.md"   # 分类页的标题（不写就会显示英文 Categories）
 
     - source: notes
       # 挂进一个具名 section，页面的 Type 才会是 "notes"，
       # 从而和 params.mainSections 对上，首页才有文章列表。
       target: content/notes
-      # files = 白名单式 glob（Hugo 0.153 起取代 excludeFiles）
-      files:
-        - "**.md"
-        - "**.markdown"
-        - "**.png"
-        - "**.jpg"
-        - "**.jpeg"
-        - "**.gif"
-        - "**.webp"
-        - "**.svg"
-        - "**.pdf"
-        - "**.mp4"
-        - "**.webm"
+
+      # ⚠️ 这里刻意不设 files 白名单。
+      # 曾经设过 files: ["**.md", "**.png", ...] 想防误发，
+      # 结果 "**" 在 Hugo 的挂载语义里**不跨目录** ——
+      # 子目录里的文件一个都收不到（用 `hugo list all` 验证过），
+      # 于是"一篇一目录"的页面包写法彻底失效，笔记配图也就没法用了。
+      # 真正的守门人是 .gitignore：没被 commit 的文件根本不会进构建。
+      excludeFiles:
+        - "**/.obsidian/**"
+        - "**/.trash/**"
+        - "**/*.canvas"
+        - "**/*.excalidraw"
+        - "**/.DS_Store"
+        - "**/Thumbs.db"
 
 # ---------- Markdown 渲染 ----------
 markup:
