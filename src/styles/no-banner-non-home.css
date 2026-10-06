@@ -1,0 +1,33 @@
+/* ===== 非首页不显示横幅 =====
+ *
+ * 主题的 backgroundWallpaper.mode 是全局开关，没有"只首页显示"的选项。
+ * 这里按模式做等价替换：只在 is-home 上保留 banner，其余页面走 none 的版面参数。
+ *
+ * 只把 #wallpaper-wrapper 藏掉是不够的。主题的文章页版面是按横幅高度算的：
+ *     html[data-wallpaper-mode=banner] body:not(.is-home) .content-panel {
+ *         --content-top: calc(var(--banner-height-non-home) - 3.5rem)
+ *     }
+ * 而 .content-panel 是 position:absolute，top 取 --content-top。
+ * 横幅藏了但 --content-top 没改，内容上方就会空出一大块。
+ * 所以下面同时把 --content-top 收成 none 模式用的 5.5rem，
+ * 该值由主题自己的 html[data-wallpaper-mode=none] .content-panel 规则给出。
+ *
+ * 选择器与主题 banner 规则同形（html[data-wallpaper-mode=banner] body:not(.is-home)），
+ * 特异性一致、位置在后，才能稳定覆盖。
+ */
+
+html[data-wallpaper-mode="banner"] body:not(.is-home) .content-panel {
+	--content-top: 5.5rem;
+}
+
+html[data-wallpaper-mode="banner"] body:not(.is-home) #wallpaper-wrapper,
+html[data-wallpaper-mode="banner"] body:not(.is-home) #header-waves,
+html[data-wallpaper-mode="banner"] body:not(.is-home) #banner-overlay-container {
+	display: none !important;
+}
+
+/* 文章页标题本来叠在横幅上，横幅没了就只剩白色文字，会看不见。
+   横幅不显示时，把文章页的标题块一并藏掉 —— 正文自己的 h1 才是主标题。 */
+html[data-wallpaper-mode="banner"] body:not(.is-home) .banner-post-meta-overlay {
+	display: none !important;
+}
