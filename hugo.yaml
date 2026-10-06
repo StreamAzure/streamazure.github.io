@@ -140,6 +140,27 @@ params:
 
   defaultTheme: auto
 
+  # ---------- 首页介绍块 ----------
+  # 纵向顺序：头像 → 小标题 → 自述 → 社交图标，整块居中。
+  # 结构在主题 fork 的 layouts/_partials/home_info.html，
+  # 布局在主题 fork 的 assets/css/extended/home-profile.css。
+  #
+  # avatar：绝对 URL 直接用；写站内路径就当静态文件（对应仓库里的 static/ 目录）
+  # title ：小标题。顶部导航栏已经显示了站点名，这里不重复，所以不写
+  # Content：自述，按 markdown 渲染。空行分段，一段一个 <p>。
+  #          不写这一项时，首页直接显示上面 params.description 那句话。
   homeInfoParams:
-    Title: "笔记"
-    Content: "随手记下的东西。"
+    avatar: "/avatar.png"
+    Content: |-
+      做 LLM 推理引擎方向，日常围绕调度、KV Cache 与批处理这些层面读代码。
+      这个站用来放读源码时的记录，一篇讲清一条链路。
+
+      写得不全的地方欢迎到 GitHub 提 issue。
+
+  # ---------- 社交图标 ----------
+  # 显示在首页自述下方。可用的 name 由主题的 layouts/_partials/svg.html 定义。
+  socialIcons:
+    - name: "github"
+      url: "https://github.com/StreamAzure"
+    - name: "email"
+      url: "mailto:1905105036@qq.com"
