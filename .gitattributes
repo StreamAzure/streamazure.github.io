@@ -1,0 +1,23 @@
+# 统一用 LF：CI 跑在 Linux 上，避免 CRLF 混进来
+* text=auto eol=lf
+
+# 这些必须是 LF
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+
+# 二进制文件不要碰
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.pdf binary
+*.zip binary
+*.ico binary
+*.mp4 binary
+*.webm binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
