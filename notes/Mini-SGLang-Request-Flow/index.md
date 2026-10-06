@@ -3,7 +3,7 @@ title: Mini-SGLang 源码解析：从 HTTP 到 SSE，5 次消息投递
 date: 2026-05-19
 weight: 1
 categories:
-  - 技术笔记
+  - LLM Infra/推理框架
 summary: 从 HTTP 请求进入 API Server 开始，经 ZMQ 投递、tokenizer 分词、scheduler 调度计算，到增量 token 以 SSE chunk 返回客户端的完整链路。
 ---
 ## 总体流程
