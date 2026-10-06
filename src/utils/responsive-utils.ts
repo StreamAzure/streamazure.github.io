@@ -1,7 +1,12 @@
 import { sidebarLayoutConfig } from "@/config";
 
-/** 侧栏列宽，全仓库唯一字面值出处 */
-const SIDEBAR_WIDTH = "17.5rem";
+/**
+ * 侧栏列宽，全仓库唯一字面值出处。
+ * 原值 17.5rem（280px）。文章页正文的可用宽度 = 容器宽 − 两侧栏 − 间距，
+ * 280px 对"只放目录"的侧栏偏宽：1600 视口下正文只有 776px。
+ * 收到 14rem（224px）后同样视口下正文约 888px。
+ */
+const SIDEBAR_WIDTH = "14rem";
 
 const SIDEBAR_TRACK = "var(--grid-sidebar-width)";
 
