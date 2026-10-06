@@ -36,26 +36,13 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 	 * ],
 	 */
 	src: {
-		// 桌面背景图片（支持单张或多张随机）
-		// desktop: "assets/images/DesktopWallpaper/d1.avif",
-		desktop: [
-			"assets/images/DesktopWallpaper/d1.avif",
-			"assets/images/DesktopWallpaper/d2.avif",
-			"assets/images/DesktopWallpaper/d3.avif",
-			"assets/images/DesktopWallpaper/d4.avif",
-			"assets/images/DesktopWallpaper/d5.avif",
-			"assets/images/DesktopWallpaper/d6.avif",
-		],
-		// 移动背景图片（支持单张或多张随机）
-		// mobile: "assets/images/MobileWallpaper/m1.avif",
-		mobile: [
-			"assets/images/MobileWallpaper/m1.avif",
-			"assets/images/MobileWallpaper/m2.avif",
-			"assets/images/MobileWallpaper/m3.avif",
-			"assets/images/MobileWallpaper/m4.avif",
-			"assets/images/MobileWallpaper/m5.avif",
-			"assets/images/MobileWallpaper/m6.avif",
-		],
+		// 桌面背景图片。
+		// 只保留 m4 这一张：它是暖色系（暖色像素 80%、主色相 0°/20°），
+		// 头像的主色相也是 0°，两者同族，横幅与侧栏放在一起才是和谐的。
+		// 其余主题自带图多为冷色（d1/d3 主色相 200°），留着会每次刷新换一张冷暖不定的图。
+		desktop: "assets/images/MobileWallpaper/m4.avif",
+		// 移动背景图片（与桌面用同一张，保持观感一致）
+		mobile: "assets/images/MobileWallpaper/m4.avif",
 		// 背景视频播放地址
 		// 支持单个视频路径（字符串）或多个视频循环（数组，参考上面壁纸配置）
 		// 支持远程视频URL，本地视频请放在 public/assets/videos/ 目录下
@@ -64,8 +51,9 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 	},
 	// 横幅壁纸和全屏壁纸共享配置
 	common: {
-		// 壁纸遮罩暗度，让横幅文字显示更清晰，0-1之间，值越大越暗
-		dimOpacity: 0.2,
+		// 壁纸遮罩暗度，让横幅文字显示更清晰，0-1之间，值越大越暗。
+		// 0.2 时浅色壁纸偏亮，白字读起来吃力；暖色壁纸本身亮度高，取 0.35。
+		dimOpacity: 0.35,
 		// 多视频播放模式："order" 顺序循环，"random" 随机切换（仅当 playerUrl 为数组时生效）
 		playerMode: "random",
 		// 主页横幅文字
