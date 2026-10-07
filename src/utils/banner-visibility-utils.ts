@@ -54,7 +54,12 @@ export interface BannerVisibilityState {
 
 /** 随机选择副标题（当打字机关闭且为数组时）；运行时内联脚本会再选一次，此处为 SSR 初始值 */
 function getRandomSubtitle(): string | undefined {
-	const subtitle = backgroundWallpaper.common?.homeText?.subtitle;
+	const homeText = backgroundWallpaper.common?.homeText;
+	const subtitle = homeText?.subtitle;
+	// 多行模式由组件逐行渲染，这里不能给初始值，否则会与那些行叠在一起
+	if (homeText?.multiLine === true && homeText?.typewriter?.enable !== true) {
+		return undefined;
+	}
 	if (Array.isArray(subtitle)) {
 		const randomIndex = Math.floor(Math.random() * subtitle.length);
 		return subtitle[randomIndex];

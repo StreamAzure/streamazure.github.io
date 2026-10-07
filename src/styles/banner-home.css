@@ -344,6 +344,12 @@ html.is-page-transitioning .banner-home-text-overlay {
     font-family: var(--font-banner-subtitle, inherit);
 }
 
+/* 多行模式（config 的 homeText.multiLine）下单行的间距。
+   容器是 leading-snug，两行中文挨着会挤，这里给非首行加一点上边距。 */
+.banner-subtitle-line + .banner-subtitle-line {
+    margin-top: 0.35em;
+}
+
 /* 首页横幅标题下方的链接图标行（半透明圆按钮） */
 .banner-links {
     animation: banner-fadeInUp 0.3s ease-out 0.5s both;

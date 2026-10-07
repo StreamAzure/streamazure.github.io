@@ -21,6 +21,7 @@ export type BackgroundWallpaperConfig = {
 			subtitle?: string | string[]; // 副标题，支持单个字符串或字符串数组
 			titleSize?: string; // 主标题字体大小，如 "3.5rem"
 			subtitleSize?: string; // 副标题字体大小，如 "1.5rem"
+			multiLine?: boolean; // 副标题是否逐行全部展示（需关闭 typewriter），默认 false
 			typewriter?: {
 				enable: boolean; // 是否启用打字机效果
 				speed: number; // 打字速度（毫秒）

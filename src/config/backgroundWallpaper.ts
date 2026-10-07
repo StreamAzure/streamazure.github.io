@@ -64,18 +64,20 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			title: "StreamAzure 的笔记",
 			// 主页横幅主标题字体大小
 			titleSize: "4.5rem",
-			// 主页横幅副标题
+			// 主页横幅副标题。数组里每一项在多行模式下就是一行。
 			subtitle: [
 				"读 LLM 推理引擎的源码",
 				"一篇讲清一条链路",
 			],
 			// 主页横幅副标题字体大小
 			subtitleSize: "1.5rem",
+			// 副标题多行模式：数组里每一项固定显示一行。
+			// 只在 typewriter.enable 为 false 时生效（打字机优先级更高）。
+			multiLine: true,
 			typewriter: {
-				// 是否启用打字机效果
-				// 打字机开启 → 循环显示所有副标题
-				// 打字机关闭 → 每次刷新随机显示一条副标题
-				enable: true,
+				// 是否启用打字机效果。
+				// 关掉后由 multiLine 决定：true 逐行全显示，false 每次刷新随机显示一条。
+				enable: false,
 				// 打字速度（毫秒）
 				speed: 100,
 				// 删除速度（毫秒）

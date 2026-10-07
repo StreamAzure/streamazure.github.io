@@ -13,6 +13,17 @@ const { showHomeText, initialRandomSubtitle } = Astro.props;
 const homeText = backgroundWallpaper.common?.homeText;
 const homeTextLinks = homeText?.links;
 const homeTextLinksEnable = homeText?.linksEnable !== false;
+
+// 副标题的三种呈现方式，按优先级：
+//   1. typewriter.enable  -> 打字机逐字循环
+//   2. multiLine          -> 数组每一项固定显示一行
+//   3. 其余               -> 每次刷新随机显示一条
+// 第 2 项只对数组形式的 subtitle 有意义。
+const subtitleMultiLine =
+	Array.isArray(homeText?.subtitle) &&
+	homeText?.multiLine === true &&
+	homeText?.typewriter?.enable !== true;
+const subtitleLines = subtitleMultiLine ? (homeText?.subtitle as string[]) : [];
 ---
 {homeText?.enable && (
     <div class={`banner-home-text-overlay absolute inset-0 z-20 flex items-center justify-center ${!showHomeText ? 'hidden' : ''}`}>
@@ -32,6 +43,13 @@ const homeTextLinksEnable = homeText?.linksEnable !== false;
                                 deleteSpeed={homeText.typewriter.deleteSpeed}
                                 pauseTime={homeText.typewriter.pauseTime}
                             />
+                        ) : subtitleMultiLine ? (
+                            /* 多行模式：数组里每一项渲染成一行，全部固定展示。
+                               ⚠️ 这里必须用块级元素分行，不能用 \n —— 容器没有 white-space: pre-line，
+                               换行符会被 HTML 折叠掉。
+                                ⚠️ 同时不能给容器加 .typewriter 类：下面 setRandomSubtitle 的
+                               随机单行逻辑靠这个类名判断该不该覆盖，加了会被它用 textContent 清掉。 */
+                            subtitleLines.map((line) => <div class="banner-subtitle-line">{line}</div>)
                         ) : (
                             initialRandomSubtitle
                         )}
@@ -83,6 +101,9 @@ const homeTextLinksEnable = homeText?.linksEnable !== false;
         try {
             const subtitles = JSON.parse(subtitlesData);
             // Only randomize if it's an array and typewriter is NOT enabled (check for typewriter class)
+            // 多行模式下服务端已逐行渲染（容器内有 .banner-subtitle-line），
+            // 这里必须跳过 —— 否则 textContent 会把那些行整个覆盖掉。
+            if (subtitleElement.querySelector('.banner-subtitle-line')) return;
             if (Array.isArray(subtitles) && subtitles.length > 0 && !subtitleElement.querySelector('.typewriter')) {
                 // Use a global variable to persist the subtitle across Swup navigations
                 // This variable will be reset on full page reload (F5), meeting the requirement
