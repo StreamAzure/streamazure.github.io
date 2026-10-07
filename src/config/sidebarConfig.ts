@@ -128,8 +128,8 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 		{
 			// 组件类型：站点信息组件
 			type: "siteInfo",
-			// 是否启用该组件
-			enable: true,
+			// 关掉：构建平台、依赖版本这些对读者没有意义
+			enable: false,
 			// 组件位置
 			position: "top",
 			// 是否在文章详情页显示
@@ -302,8 +302,8 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 		{
 			// 组件类型：站点信息组件
 			type: "siteInfo",
-			// 是否启用该组件
-			enable: true,
+			// 关掉：同上，右侧栏与移动端底部都不显示
+			enable: false,
 			// 是否在文章详情页显示
 			showOnPostPage: true,
 			// 组件专属配置

@@ -330,7 +330,11 @@ export const siteConfig: SiteConfig = {
 		// - "avif": 仅输出 AVIF 格式（最新技术，最小体积，目前兼容性较低，构建时间较长）
 		// - "webp": 仅输出 WebP 格式（体积适中，兼容性好，构建时间短）
 		// - "both": 同时输出 AVIF 和 WebP（浏览器自动选择最佳格式）
-		formats: "webp",
+		//
+		// 用 "avif"：源图本身就是 AVIF，转成 WebP 会明显变大
+		// （实测横幅 m4：源图 avif 142 KB -> webp 320 KB，两倍多）。
+		// AVIF 在 2024 年后的主流浏览器都支持，本项目不面向更老的浏览器。
+		formats: "avif",
 		// 图片压缩质量 (1-100)，值越低体积越小但质量越差，推荐 70-85
 		quality: 85,
 		// 为特定域名的图片添加 referrerpolicy="no-referrer" 属性

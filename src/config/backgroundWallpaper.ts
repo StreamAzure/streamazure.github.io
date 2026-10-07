@@ -40,9 +40,9 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		// 只保留 m4 这一张：它是暖色系（暖色像素 80%、主色相 0°/20°），
 		// 头像的主色相也是 0°，两者同族，横幅与侧栏放在一起才是和谐的。
 		// 其余主题自带图多为冷色（d1/d3 主色相 200°），留着会每次刷新换一张冷暖不定的图。
-		desktop: "assets/images/MobileWallpaper/m4.avif",
+		desktop: "assets/images/MobileWallpaper/m4-banner.avif",
 		// 移动背景图片（与桌面用同一张，保持观感一致）
-		mobile: "assets/images/MobileWallpaper/m4.avif",
+		mobile: "assets/images/MobileWallpaper/m4-banner.avif",
 		// 背景视频播放地址
 		// 支持单个视频路径（字符串）或多个视频循环（数组，参考上面壁纸配置）
 		// 支持远程视频URL，本地视频请放在 public/assets/videos/ 目录下
