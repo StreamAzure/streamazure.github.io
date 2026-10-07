@@ -61,16 +61,15 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 是否启用主页横幅文字
 			enable: true,
 			// 主页横幅主标题
-			title: "StreamAzure 的笔记",
+			title: "StreamAzure's Blog",
 			// 主页横幅主标题字体大小
-			titleSize: "4.5rem",
+			titleSize: "3.5rem",
 			// 主页横幅副标题。数组里每一项在多行模式下就是一行。
 			subtitle: [
-				"读 LLM 推理引擎的源码",
-				"一篇讲清一条链路",
+				"AI 全栈开发 / Data Agent / Coding Agent / LLM Infra"
 			],
 			// 主页横幅副标题字体大小
-			subtitleSize: "1.5rem",
+			subtitleSize: "1.0rem",
 			// 副标题多行模式：数组里每一项固定显示一行。
 			// 只在 typewriter.enable 为 false 时生效（打字机优先级更高）。
 			multiLine: true,
