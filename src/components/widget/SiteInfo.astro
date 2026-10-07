@@ -87,11 +87,10 @@ const siteDomain = siteConfig.site_url
 	? siteConfig.site_url.replace(/^https?:\/\//, "").replace(/\/$/, "")
 	: "unknown";
 
-// 文章许可
-const licenseName = licenseConfig.enable ? licenseConfig.name : "None";
-
 // ---- 组装展示数据 ----
 // 始终显示的项目（列表）
+// 文章许可这一行只在启用了许可证时才有意义 —— 关掉后原本会显示成 "None"，
+// 所以直接不加入列表，而不是渲染一个空值。
 const mainItems = [
 	{
 		icon: "material-symbols:cloud-outline",
@@ -104,11 +103,15 @@ const mainItems = [
 		value: `Firefly v${blogVersion}`,
 		href: "https://github.com/CuteLeaf/Firefly",
 	},
-	{
-		icon: "material-symbols:copyright-outline",
-		label: i18n(I18nKey.siteInfoLicense),
-		value: licenseName,
-	},
+	...(licenseConfig.enable
+		? [
+				{
+					icon: "material-symbols:copyright-outline",
+					label: i18n(I18nKey.siteInfoLicense),
+					value: licenseConfig.name,
+				},
+			]
+		: []),
 ];
 
 // 可折叠的项目（格子布局）
