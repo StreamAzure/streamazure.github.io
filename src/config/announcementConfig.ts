@@ -5,7 +5,7 @@ export const announcementConfig: AnnouncementConfig = {
 	title: "",
 
 	// 公告内容
-	content: "本站已从 Hugo + PaperMod 迁移到 Astro + Firefly。",
+	content: "",
 
 	// 是否允许用户关闭公告
 	closable: true,

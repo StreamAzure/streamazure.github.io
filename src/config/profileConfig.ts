@@ -12,7 +12,7 @@ export const profileConfig: ProfileConfig = {
 	name: "StreamAzure",
 
 	// 个人签名
-	bio: "读 LLM 推理引擎的源码，一篇讲清一条链路。",
+	bio: "古法码字爱好者",
 
 	// 链接配置
 	// 已经预装的图标集：fa7-brands，fa7-regular，fa7-solid，material-symbols，simple-icons
@@ -30,7 +30,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "Email",
 			icon: "fa7-solid:envelope",
-			url: "mailto:1905105036@qq.com",
+			url: "mailto:streamazure2020@gmail.com",
 			showName: false,
 		},
 	],

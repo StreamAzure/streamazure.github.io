@@ -43,20 +43,20 @@ const pages = resolvePageToggles({
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "StreamAzure 的笔记",
+	title: "StreamAzure's Blog",
 
 	// 站点副标题
-	subtitle: "读源码的记录",
+	subtitle: "",
 
 	// 站点 URL
 	site_url: "https://streamazure.github.io",
 
 	// 站点描述
 	description:
-		"做 LLM 推理引擎方向，日常围绕调度、KV Cache 与批处理这些层面读代码。这个站用来放读源码时的记录，一篇讲清一条链路。",
+		"AI 全栈开发 / Data Agent / Coding Agent / LLM Infra",
 
 	// 站点关键词
-	keywords: ["LLM", "推理引擎", "SGLang", "KV Cache", "源码解析", "技术博客"],
+	keywords: ["LLM", "Agent", "源码解析", "技术博客"],
 
 	// 主题色
 	themeColor: {
@@ -78,7 +78,7 @@ export const siteConfig: SiteConfig = {
 		// 是否开启卡片边框和阴影，开启后让网站更有立体感
 		border: false,
 		// 是否让卡片风格跟随主题色相
-		followTheme: false,
+		followTheme: true,
 	},
 
 	// Favicon 配置
@@ -112,13 +112,13 @@ export const siteConfig: SiteConfig = {
 			alt: "🍀",
 		},
 		// 导航栏标题
-		title: "StreamAzure 的笔记",
+		title: "StreamAzure's Blog",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中
 		menuAlign: "center",
 		// 导航栏图标和标题是否跟随主题色
-		followTheme: false,
+		followTheme: true,
 		// 导航栏模式navbarMode：
 		// "static"：不固定，随页面滚动消失
 		// "fixed"：固定在顶部常显
@@ -127,7 +127,7 @@ export const siteConfig: SiteConfig = {
 	},
 
 	// 站点开始日期，用于统计运行天数
-	siteStartDate: "2026-01-01",
+	siteStartDate: "2026-10-05",
 
 	// 站点时区（IANA 时区字符串），用于格式化bangumi、rss里的构建日期时间等等..
 	// 示例："Asia/Shanghai", "UTC", 如果为空，则按照构建服务器的时区进行时区转换
@@ -228,7 +228,7 @@ export const siteConfig: SiteConfig = {
 			enablePythonMarkdownAdmonitions: false,
 		},
 		// 文章页底部的"上次编辑时间"卡片开关
-		showLastModified: true,
+		showLastModified: false,
 		// 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片
 		outdatedThreshold: 30,
 		// 是否显示文章页的分享按钮（同时控制底部的"文章分享"卡片）
@@ -238,7 +238,7 @@ export const siteConfig: SiteConfig = {
 		// 是否显示相关文章推荐
 		relatedPosts: true,
 		// 是否显示随机文章推荐
-		randomPosts: true,
+		randomPosts: false,
 		// OpenGraph图片功能，注意开启后要渲染很长时间，不建议本地调试的时候开启
 		generateOgImages: true,
 		// 沉浸阅读配置：电脑端文章详情页右下角按钮，进入后只留文章卡片+左侧目录
